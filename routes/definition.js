@@ -2,12 +2,6 @@
 var express = require('express');
 var definitions = express.Router();
 var app = express();
-var pgdb = app.get('pgdb');
-
-// var definitions = [ 
-//     { label: 'Word', name: 'word' },
-//     { label: 'Definition', name: 'definition' },
-// ];
 
 // Find products
 definitions.get('/', async function (req, res, next) {

@@ -9,7 +9,6 @@ var app = express();
 
 const port = 8080;
 
-console.log("In")
 // Set up Postgres using massive.js
 var connectionString = process.env.DATABASE_URL || "postgres://postgres@localhost/postgres?ssl=false";
 const massive = require('massive');
