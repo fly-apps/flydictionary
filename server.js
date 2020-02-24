@@ -7,7 +7,8 @@ var routes = require('./routes/index');
 var definitions = require('./routes/definition');
 var app = express();
 
-const port = 8080;
+const port = process.env.PORT || 8080
+;
 
 // Set up Postgres using massive.js
 var connectionString = process.env.DATABASE_URL || "postgres://postgres@localhost/postgres?ssl=false";
