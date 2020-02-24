@@ -11,10 +11,11 @@ const port = process.env.PORT || 8080
 ;
 
 // Set up Postgres using massive.js
-var connectionString = process.env.DATABASE_URL || "postgres://postgres@localhost/postgres?ssl=false";
+var connectionString = process.env.DATABASE_URL+"?ssl=true" || "postgres://postgres@localhost/postgres?ssl=false";
 const massive = require('massive');
 (async () => {
     try {
+        console.log(connectionString);
         const db = await massive({
             connectionString: connectionString
         });
