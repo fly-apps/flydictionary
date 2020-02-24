@@ -2,7 +2,7 @@
   "name": "FlyDictionary Example App",
   "description": "A Simple Node.js app using Express, Massive, PostgreSQL and Bulma styling",
   "repository": "https://github.com/fly-examples/flydictionary",
-  "keywords": ["node", "express", "static"]
+  "keywords": ["node", "express", "static"],
   "addons": [
     {
       "plan": "heroku-postgresql"
