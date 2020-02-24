@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{title}}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <script src="/js/main.js"></script>
+</head>
+
+<body onLoad="mysetup()">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://fly.io">
+                <img src="/images/flyicon.png">
+            </a>      
+        </div>
+
+        <div class="navbar-menu">
+        <a class="navbar-item" id="definitions" href="/definitions">Show Definitions</a>
+        <a class="navbar-item" id="definition" href="/definitions/new">Add Definition</a>
+        </div>
+    </nav>
+
+</div>
+
+    <section class="section">
+        <div class="container">
+            {{{body}}}
+        </div>
+    </section>
+
+</body>
+
+</html>

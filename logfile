@@ -1,0 +1,18 @@
+2020-02-21 11:58:21.170 GMT [89122] LOG:  starting PostgreSQL 12.2 on x86_64-apple-darwin19.3.0, compiled by Apple clang version 11.0.0 (clang-1100.0.33.17), 64-bit
+2020-02-21 11:58:21.173 GMT [89122] LOG:  listening on IPv6 address "::1", port 5432
+2020-02-21 11:58:21.173 GMT [89122] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2020-02-21 11:58:21.174 GMT [89122] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2020-02-21 11:58:21.186 GMT [89123] LOG:  database system was shut down at 2020-02-21 11:58:11 GMT
+2020-02-21 11:58:21.190 GMT [89122] LOG:  database system is ready to accept connections
+2020-02-21 12:10:49.921 GMT [90705] FATAL:  role "dj" does not exist
+2020-02-24 09:59:05.937 GMT [94195] FATAL:  role "dj" does not exist
+2020-02-24 09:59:17.391 GMT [94216] ERROR:  syntax error at or near "/" at character 1
+2020-02-24 09:59:17.391 GMT [94216] STATEMENT:  /dt
+	;
+2020-02-24 09:59:28.536 GMT [94216] ERROR:  syntax error at or near "product" at character 10
+2020-02-24 09:59:28.536 GMT [94216] STATEMENT:  select * product
+	;
+2020-02-24 10:00:29.780 GMT [94216] ERROR:  syntax error at or near "product" at character 6
+2020-02-24 10:00:29.780 GMT [94216] STATEMENT:  drop product;
+2020-02-24 14:26:42.914 GMT [94216] ERROR:  table "product" does not exist
+2020-02-24 14:26:42.914 GMT [94216] STATEMENT:  drop table product;
