@@ -26,7 +26,6 @@ if (connectionString==undefined) {
 const massive = require('massive');
 (async () => {
     try {
-        console.log(connectionString);
         const db = await massive({
             connectionString: connectionString
         });
