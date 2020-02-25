@@ -11,7 +11,17 @@ const port = process.env.PORT || 8080
 ;
 
 // Set up Postgres using massive.js
-var connectionString = process.env.DATABASE_URL || "postgres://postgres@localhost/postgres?ssl=false";
+var connectionString = process.env.DATABASE_URL
+
+if (connectionString==undefined) {
+    // Fallback to a local Postgres
+    connectionString="postgres://postgres@localhost/postgres?ssl=false";
+} else {
+    // If there's no SSL setting, force SSL on
+    if(!(connectionString.endsWith("?ssl=true")||connectionString.endsWith("?ssl=false"))) {
+        connectionString=connectionString+"?ssl=true";
+    }
+}
 
 const massive = require('massive');
 (async () => {
