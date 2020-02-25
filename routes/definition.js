@@ -44,15 +44,13 @@ definitions.get('/new', function (req, res, next) {
 
 // Create a new product
 definitions.post('/new', function (req, res, next) {
-  req.app.get('db').saveDoc("definitions", req.body, function (err, result) {
-    if (err) {
+  try {
+    const result=req.app.get('db').saveDoc("definitions", req.body);
+    res.redirect("/definitions/");
+   } catch (err) {
       console.log(err);
       res.sendStatus(500);
-    } else {
-      res.redirect("/definitions/" + result.id);
-    }
-  })
-  res.redirect("/definitions/")
+  }
 });
 
 module.exports = definitions;
