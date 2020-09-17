@@ -1,6 +1,7 @@
 var express = require('express');
 var favicon = require('serve-favicon');
 var path = require('path');
+var pgparse = require('pg-connection-string');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var routes = require('./routes/index');
@@ -15,12 +16,10 @@ var connectionString = process.env.DATABASE_URL
 
 if (connectionString==undefined) {
     // Fallback to a local Postgres
-    connectionString="postgres://postgres@localhost/postgres?ssl=false";
+    connector=pgparse.parse("postgres://postgres@localhost/postgres?ssl=false");
 } else {
-    // If there's no SSL setting, force SSL on
-    if(!(connectionString.endsWith("?ssl=true")||connectionString.endsWith("?ssl=false"))) {
-        connectionString=connectionString+"?ssl=true";
-    }
+    connector=pgparse.parse(connectionString);
+    connector.ssl={ rejectUnauthorized: true };
 }
 
 const massive = require('massive');
