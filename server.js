@@ -8,20 +8,20 @@ var routes = require('./routes/index');
 var definitions = require('./routes/definition');
 var app = express();
 
-const port = process.env.PORT || 8080
-;
+const port = process.env.PORT || 8080;
+const massive = require('massive');
 
-// Set up Postgres using massive.js
 var connectionString = process.env.DATABASE_URL
 
 if (connectionString==undefined) {
     // Fallback to a local Postgres
-    connector=parse("postgres://postgres@localhost/postgres?ssl=false");
+    connector=parse("postgres://postgres@localhost/postgres");
+    connector.ssl=false;
 } else {
     connector=parse(connectionString);
-    connector.ssl={ "sslmode": "no-verify" };
+    connector.ssl={ "sslmode": "require", "rejectUnauthorized":false };
 }
-const massive = require('massive');
+
 (async () => {
     try {
         const db = await massive(connector);
