@@ -1,7 +1,7 @@
 var express = require('express');
 var favicon = require('serve-favicon');
 var path = require('path');
-var pgparse = require('pg-connection-string');
+var parse = require('pg-connection-string').parse;
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var routes = require('./routes/index');
@@ -16,18 +16,15 @@ var connectionString = process.env.DATABASE_URL
 
 if (connectionString==undefined) {
     // Fallback to a local Postgres
-    connector=pgparse.parse("postgres://postgres@localhost/postgres?ssl=false");
+    connector=parse("postgres://postgres@localhost/postgres?ssl=false");
 } else {
-    connector=pgparse.parse(connectionString);
-    connector.ssl={ rejectUnauthorized: true };
+    connector=parse(connectionString);
+    connector.ssl={ "sslmode": "no-verify" };
 }
-
 const massive = require('massive');
 (async () => {
     try {
-        const db = await massive({
-            connectionString: connectionString
-        });
+        const db = await massive(connector);
         app.set('db', db);
         tables=db.listTables()
     } catch (e) {
