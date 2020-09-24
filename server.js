@@ -79,4 +79,4 @@ app.use(function (err, req, res, next) {
 });
 
 
-app.listen(port, () => console.log(`Definitions app listening on ${port}`));
+app.listen(port, () => console.log(`Flydictionary app listening on ${port}`));

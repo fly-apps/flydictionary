@@ -3,7 +3,7 @@ var express = require('express');
 var definitions = express.Router();
 var app = express();
 
-// Find products
+// Find definitions
 definitions.get('/', async function (req, res, next) {
   definitions = await req.app.get("db").definitions
   if (definitions==undefined) {
@@ -34,7 +34,7 @@ definitions.get('/', async function (req, res, next) {
   }
 });
 
-// Render new product page
+// Render new definition page
 definitions.get('/new', function (req, res, next) {
   res.render('definition', {
     tab: 'definition',
@@ -42,7 +42,7 @@ definitions.get('/new', function (req, res, next) {
   });
 });
 
-// Create a new product
+// Create a new definition
 definitions.post('/new', function (req, res, next) {
   try {
     const result=req.app.get('db').saveDoc("definitions", req.body);
